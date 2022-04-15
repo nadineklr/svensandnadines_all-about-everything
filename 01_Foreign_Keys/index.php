@@ -22,7 +22,7 @@ $user = 'root';
 $dbname = 'demo';
 $passwd = 'root';
 
-$userid = 1;
+$userid = 2;
 
 
 // Get User specigic data only 
