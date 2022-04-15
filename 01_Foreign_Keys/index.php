@@ -23,7 +23,7 @@ $dbname = 'demo';
 $passwd = 'root';
 
 $userid = 2;
-
+ 
 
 // Get User specigic data only 
 // Example for user login dashboard

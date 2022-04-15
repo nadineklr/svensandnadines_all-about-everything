@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Erstellungszeit: 15. Apr 2022 um 16:18
+-- Erstellungszeit: 15. Apr 2022 um 16:21
 -- Server-Version: 5.7.34
 -- PHP-Version: 7.4.21
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `demo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `blogpost`
+--
+
+CREATE TABLE `blogpost` (
+  `postID` int(11) NOT NULL,
+  `post_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_author` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `blogpost`
+--
+
+INSERT INTO `blogpost` (`postID`, `post_text`, `post_author`) VALUES
+(1, 'Some Text of user 1', 1),
+(2, 'Some Text of User 2', 2),
+(3, 'This is another blogpost of user 2', 2),
+(4, 'This is another blogpost of user 1', 1),
+(5, 'Post of user 1', 1);
 
 -- --------------------------------------------------------
 
@@ -48,6 +71,13 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`) VALUE
 --
 
 --
+-- Indizes für die Tabelle `blogpost`
+--
+ALTER TABLE `blogpost`
+  ADD PRIMARY KEY (`postID`),
+  ADD KEY `post_author` (`post_author`);
+
+--
 -- Indizes für die Tabelle `users`
 --
 ALTER TABLE `users`
@@ -58,10 +88,26 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `blogpost`
+--
+ALTER TABLE `blogpost`
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT für Tabelle `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `blogpost`
+--
+ALTER TABLE `blogpost`
+  ADD CONSTRAINT `blogpost_ibfk_1` FOREIGN KEY (`post_author`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
